@@ -1,2 +1,19 @@
-# A.I-Model-that-Predicts-A-Dogs-Boot-size-from-its-Harness-size
-This a python machine learning code that predicts a user's dog's boot size from the input harness size. 
+# Tauri + React + Typescript
+
+This template should help get you started developing with Tauri, React and Typescript in Vite.
+
+## Recommended IDE Setup
+
+- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+
+## Create tauri app
+
+```
+npm create tauri-app@latest
+```
+
+## Tauri cli
+
+```
+npm install --save-dev @tauri-apps/cli
+```
