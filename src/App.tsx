@@ -1,14 +1,37 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import './App.css'; // Add this line
+
+interface Task {
+  text: string;
+  completed: boolean;
+}
 
 function App() {
-  const [tasks, setTasks] = useState<string[]>([]); // Add type annotation for tasks state variable
+  const [tasks, setTasks] = useState<Task[]>([]); // Provide initial type for tasks state variable
   const [newTask, setNewTask] = useState('');
+
+  useEffect(() => {
+    // Load tasks from local storage on mount
+    const storedTasks = JSON.parse(localStorage.getItem('tasks') || '') || [];
+    setTasks(storedTasks);
+  }, []);
+
+  useEffect(() => {
+    // Save tasks to local storage whenever tasks change
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
 
   const addTask = () => {
     if (newTask.trim() !== '') {
-      setTasks([...tasks, newTask.trim()]);
+      setTasks([...tasks, { text: newTask.trim(), completed: false }]);
       setNewTask('');
     }
+  };
+
+  const toggleTask = (index: number) => {
+    const updatedTasks = [...tasks];
+    updatedTasks[index].completed = !updatedTasks[index].completed;
+    setTasks(updatedTasks);
   };
 
   const removeTask = (index: number) => {
@@ -18,7 +41,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="app">
       <h1>Todo List</h1>
       <div>
         <input
@@ -30,8 +53,8 @@ function App() {
       </div>
       <ul>
         {tasks.map((task, index) => (
-          <li key={index}>
-            {task}
+          <li key={index} className={task.completed ? 'completed' : ''}>
+            <span onClick={() => toggleTask(index)}>{task.text}</span>
             <button onClick={() => removeTask(index)}>Remove</button>
           </li>
         ))}
