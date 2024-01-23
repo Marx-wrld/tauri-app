@@ -19,3 +19,7 @@ npm create tauri-app@latest
 ```
 npm install --save-dev @tauri-apps/cli
 ```
+## Run
+```
+npm run tauri dev
+```
