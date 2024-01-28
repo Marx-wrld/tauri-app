@@ -1,7 +1,5 @@
 # tauri-app
 
-This template should help get you started developing with Tauri, React and Typescript in Vite. 
-
 This is a simple todo list Tauri desktop application that allows users to manage a list of tasks, including adding new tasks, marking tasks as completed, and removing tasks. The app utilizes local storage to persist tasks between sessions and features a clean and responsive user interface. 
 
 ## Recommended IDE Setup
